@@ -1,4 +1,2 @@
 #!/bin/bash
-
-echo $PYCODE > pyfile.py
-python pyfile.py
+python3 pyfile.py
