@@ -1,9 +1,8 @@
 #!/usr/bin/python3
-import sys
+if __name__ == '__main__':
+    import sys
 
-c = len(sys.argv) - 1
-
-def run():
+    c = len(sys.argv) - 1
     if c == 0:
         print("0 arguments.")
     else:
@@ -14,6 +13,3 @@ def run():
             print("{} arguments :".format(c))
             for arg in range(1, c + 1):
                 print("{}: {}".format(arg, sys.argv[arg]))
-
-if __name__ == '__main__':
-    run()
