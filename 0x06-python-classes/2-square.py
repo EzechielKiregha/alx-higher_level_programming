@@ -6,14 +6,10 @@ class Square:
     """ represent a square in short """
     def __init__(self, size=0):
         """ initializing the size of the square """
-        try:
+        if type(size) is int:
             if size < 0:
-                raise ValueError
-            elif type(size) is not int:
-                raise TypeError
+                raise ValueError("size must be >= 0")
             else:
                 self.__size = size
-        except TypeError:
-            print("size must be an integer")
-        except ValueError:
-            print("size must be >= 0")
+        else:
+            raise TypeError("size must be an integer")
