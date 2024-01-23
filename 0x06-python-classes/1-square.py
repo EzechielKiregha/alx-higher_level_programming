@@ -9,7 +9,7 @@ class Square:
     """
 
 
-    def __init__(self, n):
+    def __init__(self, n=0):
         """ The Constractor of a class 
         Args:
             n is an integer and size of the square
