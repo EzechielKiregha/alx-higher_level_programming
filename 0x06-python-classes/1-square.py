@@ -7,7 +7,9 @@ class Square:
     Attributes: 
         __size is private instance attrubute
     """
-    def __init__(self,n):
+
+
+    def __init__(self, n):
         """ The Constractor of a class 
         Args:
             n is an integer and size of the square
