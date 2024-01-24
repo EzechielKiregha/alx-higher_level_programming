@@ -4,13 +4,11 @@
 
 class Square:
     """ Square class representing a square
-    Attributes: 
+    Attributes:
         __size is private instance attrubute
     """
-
-
     def __init__(self, n=0):
-        """ The Constractor of a class 
+        """ The Constractor of a class
         Args:
             n is an integer and size of the square
         """
