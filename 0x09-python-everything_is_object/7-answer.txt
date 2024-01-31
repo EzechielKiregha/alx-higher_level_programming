@@ -1,1 +1,1 @@
-declaring 2 variables s1 and s2, assigning s1 the string "Best" and assigning to s2 the variable s1, then check if s1 and s2 point to the same object
+True
