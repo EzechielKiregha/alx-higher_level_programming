@@ -6,17 +6,18 @@ Base = base.Base
 
 
 def validate_prop(name, value):
-    match name:
-        case "width" | "height" as dimension:
-            if (type(value) != int):
-                raise TypeError("{} must be an integer".format(dimension))
-            if (value <= 0):
-                raise ValueError("{} must be > 0".format(dimension))
-        case "x" | "y" as point:
-            if (type(value) != int):
-                raise TypeError("{} must be an integer".format(point))
-            if (value < 0):
-                raise ValueError("{} must be >= 0".format(point))
+    if name in ("width", "height"):
+        dimension = name
+        if not isinstance(value, int):
+            raise TypeError(f"{dimension} must be an integer")
+        if value <= 0:
+            raise ValueError(f"{dimension} must be > 0")
+    elif name in ("x", "y"):
+        point = name
+        if not isinstance(value, int):
+            raise TypeError(f"{point} must be an integer")
+        if value < 0:
+            raise ValueError(f"{point} must be >= 0")
 
 
 class Rectangle(Base):
