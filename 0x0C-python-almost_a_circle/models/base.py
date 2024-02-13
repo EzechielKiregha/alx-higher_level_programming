@@ -91,16 +91,20 @@ class Base:
         new_inst = cls(10, 10)
         new_inst.update(**dictionary)
         return new_inst
-
+    
     @classmethod
     def load_from_file(cls):
         """a class method that returns all instances from a json file"""
         res_file = cls.__name__ + ".json"
-        with open(res_file, mode="r+", encoding="utf-8") as file:
-            res = file.read()
-            res_list = cls.from_json_string(res)
-            res_list = [cls.create(**dct) for dct in res_list]
-            return res_list
+        try:
+            with open(res_file, mode="r", encoding="utf-8") as file:
+                res = file.read()
+                res_list = cls.from_json_string(res)
+                res_list = [cls.create(**dct) for dct in res_list]
+                return res_list
+        except FileNotFoundError:
+            return []
+
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
