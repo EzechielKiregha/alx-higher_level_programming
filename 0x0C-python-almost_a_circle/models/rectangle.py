@@ -6,6 +6,7 @@ Base = base.Base
 
 
 def validate_prop(name, value):
+    """validating the name and value"""
     if name in ("width", "height"):
         dimension = name
         if not isinstance(value, int):
