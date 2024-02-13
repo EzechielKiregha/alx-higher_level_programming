@@ -78,11 +78,11 @@ class Base:
         res_file += ".json"
         if not list_objs:
             with open(res_file, mode="w", encoding="utf-8") as file:
-                return json.dump([], file)
+                file.write(cls.to_json_string([]))
         else:
-            list_objs = [obj.to_dictionary() for obj in list_objs]
+            list_dicts = [obj.to_dictionary() for obj in list_objs]
             with open(res_file, mode="w", encoding="utf-8") as file:
-                json.dump(list_objs, file)
+                file.write(cls.to_json_string(list_dicts))
 
     @classmethod
     def create(cls, **dictionary):
