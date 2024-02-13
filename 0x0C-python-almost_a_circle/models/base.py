@@ -91,7 +91,7 @@ class Base:
         new_inst = cls(10, 10)
         new_inst.update(**dictionary)
         return new_inst
-    
+
     @classmethod
     def load_from_file(cls):
         """a class method that returns all instances from a json file"""
@@ -104,7 +104,6 @@ class Base:
                 return res_list
         except FileNotFoundError:
             return []
-
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
