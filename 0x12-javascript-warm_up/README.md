@@ -1,1 +1,1 @@
-## In this Just a warming up JavaScript Project
+This is the readme file for the directory
