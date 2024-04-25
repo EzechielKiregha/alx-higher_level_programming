@@ -8,15 +8,8 @@ fi
 
 url=$1
 
-# Send request to URL and store response in a temporary file
-response=$(mktemp)
-curl -s -o "$response" "$url"
-
-# Get the size of the response body in bytes
-size=$(wc -c < "$response")
+# Send request to URL and get the size of the response body in bytes
+size=$(curl -s -o /dev/null -w "%{size_download}" "$url")
 
 # Display the size of the response body
 echo "$size"
-
-# Clean up temporary file
-rm "$response"
