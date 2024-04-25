@@ -1,0 +1,2 @@
+# The binary search approach divides the search space in half at each step, leading to a time complexity of O(log(n)), where n is the number of elements in the list.
+O(log(n))
