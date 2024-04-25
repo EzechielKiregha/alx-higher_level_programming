@@ -1,26 +1,29 @@
 #!/usr/bin/env python3
 
 def find_peak(list_of_integers):
-    """
-    Find a peak in a list of unsorted integers using a binary search approach.
-
-    Args:
-    - list_of_integers: A list of unsorted integers.
-
-    Returns:
-    - The peak element in the list.
-    """
-    if not list_of_integers:
+    arr = list_of_integers
+    if not arr:
         return None
 
-    low = 0
-    high = len(list_of_integers) - 1
+    def peak(arr, start, stop, depth=0, max_depth=1000):
+        if depth > max_depth:
+            raise RecursionError("Max depth exceeded")
 
-    while low < high:
-        mid = (low + high) // 2
-        if list_of_integers[mid] > list_of_integers[mid + 1]:
-            high = mid
+        mid = (stop + start) // 2
+        if start >= stop or mid == 0:
+            return arr[mid]
+
+        if (arr[mid] > arr[mid - 1]):
+            if (arr[mid] > arr[mid + 1]):
+                return arr[mid]
+            return peak(arr, mid, stop, depth+1, max_depth)
+        elif (arr[mid] < arr[mid - 1]):
+            if (arr[mid] > arr[mid + 1]):
+                return peak(arr, start, mid, depth+1, max_depth)
+            return peak(arr, start, mid - 1, depth+1, max_depth)
         else:
-            low = mid + 1
+            peak_left = peak(arr, start, mid - 1, depth+1, max_depth)
+            peak_right = peak(arr, mid + 1, stop, depth+1, max_depth)
+            return max(peak_left, peak_right)
 
-    return list_of_integers[low]
+    return peak(arr, 0, len(arr) - 1)
