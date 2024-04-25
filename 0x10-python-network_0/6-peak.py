@@ -1,35 +1,26 @@
 #!/usr/bin/env python3
 
 def find_peak(list_of_integers):
-    arr = list_of_integers
-    if not arr:
+    """
+    Find a peak in a list of unsorted integers using a binary search approach.
+
+    Args:
+    - list_of_integers: A list of unsorted integers.
+
+    Returns:
+    - The peak element in the list.
+    """
+    if not list_of_integers:
         return None
 
-    def peak(arr, start, stop):
-        mid = (stop + start) // 2
-        if start >= stop or mid == 0:
-            print("base case hit :")
-            print(arr[start: stop + 1])
-            return arr[mid]
-        print(start, mid, stop)
+    low = 0
+    high = len(list_of_integers) - 1
 
-        if (arr[mid] > arr[mid - 1]):
-            print("case 1")
-            if (arr[mid] > arr[mid + 1]):
-                return arr[mid]
-            return peak(arr, mid, stop)
-        elif (arr[mid] < arr[mid - 1]):
-            print("case 2")
-            if (arr[mid] > arr[mid + 1]):
-                return peak(arr, start, mid)
-            return peak(arr, start, mid - 1)
+    while low < high:
+        mid = (low + high) // 2
+        if list_of_integers[mid] > list_of_integers[mid + 1]:
+            high = mid
         else:
-            print("case 3")
-            peak_left = peak(arr, start, mid - 1)
-            peak_right = peak(arr, mid + 1, stop)
-            return max(peak_left, peak_right)
+            low = mid + 1
 
-    print(peak(arr, 0, len(arr) - 1))
-
-
-# find_peak([1, 0, 3, 2])
+    return list_of_integers[low]
